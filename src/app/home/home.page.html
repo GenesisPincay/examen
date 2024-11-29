@@ -1,20 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Enviar Correo
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+  <!-- Contenedor de mensaje de bienvenida o introducción -->
   <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+
+  <!-- Formulario para envío de correo -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formulario de Envío de Correo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="enviarCorreo()" #formCorreo="ngForm">
+        <ion-item>
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="correo" 
+            name="correo" 
+            required 
+            #correoInput="ngModel">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-textarea 
+            [(ngModel)]="mensaje" 
+            name="mensaje" 
+            required 
+            #mensajeInput="ngModel">
+          </ion-textarea>
+        </ion-item>
+
+        <!-- Botón deshabilitado si el formulario no es válido -->
+        <ion-button 
+          expand="full" 
+          type="submit" 
+          [disabled]="!formCorreo.form.valid">
+          Enviar
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+
