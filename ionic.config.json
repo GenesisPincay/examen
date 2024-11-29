@@ -1,0 +1,7 @@
+{
+  "name": "Correo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
